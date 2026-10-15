@@ -1,10 +1,3 @@
-
----
-layout: default
-title: "Mayhem — TryHackMe DFIR Investigation"
-description: "A Digital Forensics and Incident Response investigation of Havoc Command and Control, covering PCAP analysis, PowerShell malware delivery, AES-CTR traffic decryption, Windows artifact recovery, and Blue Team detection engineering."
----
-
 <div class="ctf-hero">
 
   <h1>Mayhem — DFIR Investigation</h1>
@@ -83,52 +76,49 @@ The investigation relies on network evidence and recovered artifacts rather than
 
 </div>
 
-## Navigation
-
 <div class="ctf-toc">
-
-<div class="ctf-toc-title">Documentation Map</div>
-
-- [Mission and Investigation Objectives](#mission-and-investigation-objectives)
-- [Target and Lab Information](#target-and-lab-information)
-- [Scope and Responsible Use](#scope-and-responsible-use)
-- [Investigation Methodology](#investigation-methodology)
-- [Tools Used](#tools-used)
-- [Repository Structure](#repository-structure)
-- [Attack Infrastructure and Network Topology](#attack-infrastructure-and-network-topology)
-- [Evidence Collection and Preservation](#evidence-collection-and-preservation)
-- [Phase 01 — Network Forensics](#phase-01--network-forensics)
-- [Phase 02 — Conversation Isolation](#phase-02--conversation-isolation)
-- [Phase 03 — PowerShell Delivery Chain](#phase-03--powershell-delivery-chain)
-- [Phase 04 — HTTP Object Extraction](#phase-04--http-object-extraction)
-- [Phase 05 — Malware Static Analysis](#phase-05--malware-static-analysis)
-- [Phase 06 — Havoc Command and Control](#phase-06--havoc-command-and-control)
-- [Phase 07 — DEMON_INIT Registration Analysis](#phase-07--demon_init-registration-analysis)
-- [Phase 08 — AES-CTR Session Recovery](#phase-08--aes-ctr-session-recovery)
-- [Phase 09 — CyberChef Decryption](#phase-09--cyberchef-decryption)
-- [Phase 10 — Windows Artifact Reconstruction](#phase-10--windows-artifact-reconstruction)
-- [Phase 11 — Windows Identity Enumeration](#phase-11--windows-identity-enumeration)
-- [Phase 12 — Network Configuration Discovery](#phase-12--network-configuration-discovery)
-- [Phase 13 — Reconnaissance Correlation](#phase-13--reconnaissance-correlation)
-- [Phase 14 — Persistence Investigation](#phase-14--persistence-investigation)
-- [Phase 15 — Sensitive File Discovery](#phase-15--sensitive-file-discovery)
-- [Phase 16 — Sensitive File Access](#phase-16--sensitive-file-access)
-- [Phase 17 — Indicators of Compromise](#phase-17--indicators-of-compromise)
-- [Incident Timeline Reconstruction](#incident-timeline-reconstruction)
-- [Evidence Correlation Matrix](#evidence-correlation-matrix)
-- [MITRE ATT&CK Mapping](#mitre-attck-mapping)
-- [Detection Engineering](#detection-engineering)
-- [Threat Hunting Playbook](#threat-hunting-playbook)
-- [Detection Coverage Matrix](#detection-coverage-matrix)
-- [Security Findings](#security-findings)
-- [Defensive Recommendations](#defensive-recommendations)
-- [Lessons Learned](#lessons-learned)
-- [Skills Demonstrated](#skills-demonstrated)
-- [Learning Outcomes](#learning-outcomes)
-- [References](#references)
-- [Responsible Use](#responsible-use)
-- [Conclusion](#conclusion)
-
+  <div class="ctf-toc-title">Documentation Map</div>
+  <ul>
+    <li><a href="#mission-and-investigation-objectives">Mission and Investigation Objectives</a></li>
+    <li><a href="#target-and-lab-information">Target and Lab Information</a></li>
+    <li><a href="#scope-and-responsible-use">Scope and Responsible Use</a></li>
+    <li><a href="#investigation-methodology">Investigation Methodology</a></li>
+    <li><a href="#tools-used">Tools Used</a></li>
+    <li><a href="#repository-structure">Repository Structure</a></li>
+    <li><a href="#attack-infrastructure-and-network-topology">Attack Infrastructure and Network Topology</a></li>
+    <li><a href="#evidence-collection-and-preservation">Evidence Collection and Preservation</a></li>
+    <li><a href="#phase-01--network-forensics">Phase 01 — Network Forensics</a></li>
+    <li><a href="#phase-02--conversation-isolation">Phase 02 — Conversation Isolation</a></li>
+    <li><a href="#phase-03--powershell-delivery-chain">Phase 03 — PowerShell Delivery Chain</a></li>
+    <li><a href="#phase-04--http-object-extraction">Phase 04 — HTTP Object Extraction</a></li>
+    <li><a href="#phase-05--malware-static-analysis">Phase 05 — Malware Static Analysis</a></li>
+    <li><a href="#phase-06--havoc-command-and-control">Phase 06 — Havoc Command and Control</a></li>
+    <li><a href="#phase-07--demon_init-registration-analysis">Phase 07 — DEMON_INIT Registration Analysis</a></li>
+    <li><a href="#phase-08--aes-ctr-session-recovery">Phase 08 — AES-CTR Session Recovery</a></li>
+    <li><a href="#phase-09--cyberchef-decryption">Phase 09 — CyberChef Decryption</a></li>
+    <li><a href="#phase-10--windows-artifact-reconstruction">Phase 10 — Windows Artifact Reconstruction</a></li>
+    <li><a href="#phase-11--windows-identity-enumeration">Phase 11 — Windows Identity Enumeration</a></li>
+    <li><a href="#phase-12--network-configuration-discovery">Phase 12 — Network Configuration Discovery</a></li>
+    <li><a href="#phase-13--reconnaissance-correlation">Phase 13 — Reconnaissance Correlation</a></li>
+    <li><a href="#phase-14--persistence-investigation">Phase 14 — Persistence Investigation</a></li>
+    <li><a href="#phase-15--sensitive-file-discovery">Phase 15 — Sensitive File Discovery</a></li>
+    <li><a href="#phase-16--sensitive-file-access">Phase 16 — Sensitive File Access</a></li>
+    <li><a href="#phase-17--indicators-of-compromise">Phase 17 — Indicators of Compromise</a></li>
+    <li><a href="#incident-timeline-reconstruction">Incident Timeline Reconstruction</a></li>
+    <li><a href="#evidence-correlation-matrix">Evidence Correlation Matrix</a></li>
+    <li><a href="#mitre-attck-mapping">MITRE ATT&CK Mapping</a></li>
+    <li><a href="#detection-engineering">Detection Engineering</a></li>
+    <li><a href="#threat-hunting-playbook">Threat Hunting Playbook</a></li>
+    <li><a href="#detection-coverage-matrix">Detection Coverage Matrix</a></li>
+    <li><a href="#security-findings">Security Findings</a></li>
+    <li><a href="#defensive-recommendations">Defensive Recommendations</a></li>
+    <li><a href="#lessons-learned">Lessons Learned</a></li>
+    <li><a href="#skills-demonstrated">Skills Demonstrated</a></li>
+    <li><a href="#learning-outcomes">Learning Outcomes</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#responsible-use">Responsible Use</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
 </div>
 
 ## Mission and Investigation Objectives
